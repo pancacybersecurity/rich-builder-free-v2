@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Rich Builder</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">Rich Builder</div>
+  <div class="tgt">
+    <select id="target" aria-label="Tujuan"></select>
+    <button class="btn ghost" id="btnAddTarget">+ Tujuan</button>
+    <button class="btn ghost" id="btnDelTarget">Hapus</button>
+  </div>
+  <div class="bot" id="botPill">Memeriksa…</div>
+</header>
+<div id="banner" class="banner" hidden></div>
+
+<main class="grid">
+  <section class="editor" id="drop">
+    <div class="ed-head">
+      <h2>Pesan</h2>
+      <div class="ed-tools">
+        <button class="btn" id="btnAddBlock">+ Tambah blok</button>
+        <button class="btn ghost" id="btnDrafts">Draft & riwayat</button>
+        <button class="btn ghost" id="btnClear">Kosongkan</button>
+      </div>
+    </div>
+    <div id="blocks" class="blocks"></div>
+    <div class="drophint">Seret foto, GIF, atau video ke area ini untuk menambahkannya</div>
+  </section>
+
+  <aside class="preview">
+    <div class="phone">
+      <div class="phone-top" id="pvName">Preview</div>
+      <div class="phone-body" id="pvBody"></div>
+    </div>
+    <p class="muted small">Tampilan ini hanya untuk melihat hasil. Untuk mengubah teks, pilih <b>⋯ → Edit</b> pada blok.</p>
+  </aside>
+</main>
+
+<footer class="sendbar">
+  <div class="seg" id="modes">
+    <button data-mode="send" class="on">KIRIM</button>
+    <button data-mode="schedule">JADWAL</button>
+    <button data-mode="draft">DRAFT</button>
+  </div>
+  <label class="inline" id="atWrap" hidden>Waktu kirim <input type="datetime-local" id="at"></label>
+  <label class="inline"><input type="checkbox" id="silent"> Tanpa suara</label>
+  <label class="inline"><input type="checkbox" id="protect"> Lindungi konten</label>
+  <button class="btn primary" id="go">Kirim sekarang</button>
+  <span id="result" class="result"></span>
+</footer>
+
+<dialog id="dlgEdit">
+  <div class="dlg">
+    <div class="dlg-head"><b id="dlgEditTitle">Edit</b><button class="btn primary small" data-close>Selesai</button></div>
+    <div id="dlgEditBody" class="dlg-body"></div>
+  </div>
+</dialog>
+
+<dialog id="dlgTarget">
+  <div class="dlg">
+    <div class="dlg-head"><b>Tambah tujuan</b><button class="btn ghost small" data-close>Tutup</button></div>
+    <div class="dlg-body">
+      <p class="muted small">Tujuan disimpan permanen di perangkat ini. Cukup tambahkan sekali.</p>
+      <div class="seg" id="tTypeSeg">
+        <button data-ttype="group" class="on">Grup</button>
+        <button data-ttype="channel">Channel</button>
+      </div>
+      <label class="field">Username publik atau chat ID<input id="tChat" placeholder="@namachannel atau -1001234567890"></label>
+      <div class="row-btns">
+        <button class="btn" id="tVerify">Verifikasi</button>
+        <button class="btn ghost" id="tAddBot">Tambahkan bot ke Telegram ↗</button>
+      </div>
+      <div id="tStatus" class="status-line"></div>
+      <button class="btn primary" id="tSave" disabled>Simpan tujuan</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="dlgDrafts">
+  <div class="dlg">
+    <div class="dlg-head"><b>Draft & riwayat</b><button class="btn ghost small" data-close>Tutup</button></div>
+    <div class="dlg-body">
+      <h4>Draft</h4>
+      <div id="draftList" class="list"></div>
+      <h4>Jadwal aktif</h4>
+      <div id="schedList" class="list"></div>
+      <h4>Riwayat kirim</h4>
+      <div id="histList" class="list"></div>
+    </div>
+  </div>
+</dialog>
+
+<div id="pop" class="pop" hidden></div>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+<script src="/app.js"></script>
+</body>
+</html>
