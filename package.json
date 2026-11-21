@@ -1,0 +1,8 @@
+{
+  "name": "rich-builder",
+  "version": "4.0.0",
+  "private": true,
+  "dependencies": {
+    "@vercel/blob": "latest"
+  }
+}
